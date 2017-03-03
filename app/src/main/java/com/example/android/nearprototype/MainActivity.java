@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         client.connect();
     }
 
+    // connect to Google API for LocationServices
     private void setupLocation()
     {
         // Create an instance of GoogleAPIClient.
@@ -108,14 +109,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     public void backToMap(View v)
     {
-        userStory.getInstance().setLocation(userLocation);
-
-        storyList.getReference(userStory.getInstance().getUserID()).
-                child("Location").setValue( String.format(
-                "( %s: %d, %s: %d )",
-                "Lat", userLocation.getLatitude(),
-                "Lng", userLocation.getLongitude()));
-
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }

@@ -1,0 +1,42 @@
+<RelativeLayout
+    android:id="@+id/relativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.nearprototype.MapsActivity">
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:onClick="post"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:visibility="visible"
+        android:text="Post"
+        android:layout_alignParentBottom="true"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Location Goes Here"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

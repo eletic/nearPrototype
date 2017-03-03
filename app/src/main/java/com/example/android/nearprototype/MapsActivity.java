@@ -17,7 +17,6 @@ public class MapsActivity extends FragmentActivity implements  OnMapReadyCallbac
 
     private GoogleMap mMap;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

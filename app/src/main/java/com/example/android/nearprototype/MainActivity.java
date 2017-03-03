@@ -13,7 +13,10 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener
 {
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     String TAG = "NEAR: ";
 
     FirebaseDatabase storyList = FirebaseDatabase.getInstance();
+    DatabaseReference currentStory = FirebaseDatabase.getInstance().getReference(UUID.randomUUID().toString());
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -52,8 +56,21 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         // in rare cases when a location is not available.
         userLocation = new Location(LocationServices.FusedLocationApi.getLastLocation(client));
 
-        ((TextView) findViewById(R.id.textView)).
-                setText(String.format("( %s: %f, %s: %f )", "Lat", userLocation.getLatitude(), "Lng", userLocation.getLongitude()));
+         ((TextView) findViewById(R.id.textView)).
+                 setText(String.format("( %s: %f, %s: %f )",
+                         "Lat", userLocation.getLatitude(),
+                         "Lng", userLocation.getLongitude()));
+        
+        currentStory.child("Location").child("Latitude").setValue(userLocation.getLatitude());
+        currentStory.child("Location").child("Longitude").setValue(userLocation.getLongitude());
+        currentStory.child("Gembag").child("Diamonds").setValue(100);
+        currentStory.child("Gembag").child("Emeralds").setValue(0);
+        currentStory.child("Gembag").child("Rubies").setValue(0);
+        currentStory.child("Gembag").child("Sapphires").setValue(1);
+        currentStory.child("userStory").child("Description").setValue("storyDescription");
+        currentStory.child("userStory").child("Filename").setValue("storyFilename_ID.jpg");
+        currentStory.child("userStory").child("Description").setValue("storyTitle");
+    
     }
 
     @Override

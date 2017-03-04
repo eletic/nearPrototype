@@ -1,5 +1,6 @@
 package com.example.android.nearprototype;
 
+import java.io.File;
 /**
  * Created by home on 3/3/17.
  */
@@ -7,6 +8,6 @@ package com.example.android.nearprototype;
 public class userStory
 {
     public String Description;
-    public String Filename;
+    public File Filename;
     public String Title;
 }
